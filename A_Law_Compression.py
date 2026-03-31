@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def A_Law_Compress(input,A)-> numpy.ndarray: 
+def A_Law_Compress(input,A)-> np.ndarray: 
     if(A <= 0):
         return input
     

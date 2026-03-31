@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from u_Law_Compression import u_Law_Compress
 
-def u_Law_Expansion(input,u) -> numpy.ndarray: 
+def u_Law_Expansion(input,u) -> np.ndarray: 
     if(u <= 0):
         return input
         
