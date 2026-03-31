@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def A_Law_Compress(input,A): 
-    if(A == 1):
+def A_Law_Compress(input,A)-> numpy.ndarray: 
+    if(A <= 0):
         return input
     
     denominator = 1+np.log(A)

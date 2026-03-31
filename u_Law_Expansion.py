@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from u_Law_Compression import u_Law_Compress
 
-def u_Law_Expansion(input,u): 
-    if(u == 0):
+def u_Law_Expansion(input,u) -> numpy.ndarray: 
+    if(u <= 0):
         return input
         
     output = []
