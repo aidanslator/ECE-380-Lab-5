@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def u_Law_Compress(input,u):
-    if(u == 0):
+def u_Law_Compress(input,u) -> numpy.ndarray:
+    if(u <= 0):
         return input
     return np.sign(input) * np.log(1+u*np.abs(input))/(np.log(1+u))
 
