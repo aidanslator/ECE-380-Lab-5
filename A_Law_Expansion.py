@@ -20,9 +20,9 @@ if __name__ == "__main__":
     compressed_2 = A_Law_Compress(input,2)
     compressed_100 = A_Law_Compress(input,100)
 
-    expanded_1 = A_Law_Expansion(input,1)
-    expanded_2 = A_Law_Expansion(input,2)
-    expanded_100 = A_Law_Expansion(input,100)
+    expanded_1 = A_Law_Expansion(compressed_1,1)
+    expanded_2 = A_Law_Expansion(compressed_2,2)
+    expanded_100 = A_Law_Expansion(compressed_100,100)
 
     std_expanded_1 = np.std([expanded_1, input])
     std_expanded_2 = np.std([expanded_2, input])
