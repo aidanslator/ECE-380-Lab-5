@@ -19,9 +19,9 @@ if __name__ == "__main__":
     compressed_5 = u_Law_Compress(input,5)
     compressed_100 = u_Law_Compress(input,100)
 
-    expanded_0 = u_Law_Expansion(input,0)
-    expanded_5 = u_Law_Expansion(input,5)
-    expanded_100 = u_Law_Expansion(input,100)
+    expanded_0 = u_Law_Expansion(compressed_0,0)
+    expanded_5 = u_Law_Expansion(compressed_5,5)
+    expanded_100 = u_Law_Expansion(compressed_100,100)
 
     std_expanded_0 = np.std([expanded_0, input])
     std_expanded_5 = np.std([expanded_5, input])
