@@ -1,0 +1,47 @@
+"""
+Embedded Python Blocks:
+
+Each time this file is saved, GRC will instantiate the first class it finds
+to get ports and parameters of your block. The arguments to __init__  will
+be the parameters. All of them are required to have default values!
+"""
+
+import numpy as np
+from gnuradio import gr
+
+def A_Law_Compress(input,A)-> np.ndarray: 
+    if(A <= 0):
+        return input
+    
+    denominator = 1+np.log(A)
+    
+    output = []
+    for g in input:
+        if(np.abs(g) < 1/A):
+            v = np.sign(g)*A*np.abs(g)/denominator
+        else:
+            v = np.sign(g)*(1+np.log(A*np.abs(g)))/denominator    
+        output.append(v)
+    return output
+
+class blk(gr.sync_block):  # other base classes are basic_block, decim_block, interp_block
+    """Embedded Python Block example - a simple A law compressor"""
+
+    def __init__(self, A=1):  # only default arguments here
+        """arguments to this function show up as parameters in GRC"""
+        gr.sync_block.__init__(
+            self,
+            name='A Law Compressor',   # will show up in GRC
+            in_sig=[np.float32],
+            out_sig=[np.float32]
+        )
+        # if an attribute with the same name as a parameter is found,
+        # a callback is registered (properties work, too).
+        self.A = A
+
+    def work(self, input_items, output_items):
+        """example: multiply with constant"""
+        output_items[0][:] = A_Law_Compress(input_items[0],self.A)
+        return len(output_items[0])
+
+ 
